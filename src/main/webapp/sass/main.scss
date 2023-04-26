@@ -1,0 +1,75 @@
+//bootstrap things needed to merge color themes
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+
+
+
+.bg-gradient-grzegorz{
+    background-image: linear-gradient(to right, #ff911f, #05A08C, #005247);
+}
+
+//===================================================================================FONTS==================================================================================
+$h7-font-size:                $font-size-base * 0.875;
+
+$custom-font-sizes: (
+    7: $h7-font-size,
+);
+
+$font-sizes: map-merge($font-sizes,$custom-font-sizes);
+//===================================================================================COLORS=================================================================================
+
+//grzegorz custom colors
+$grzegorz-orange: #ff911f;
+$grzegorz-dark-green: #005247;
+$grzegorz-light-green:  #05A08C;
+$grzegorz-grey:  #C1E0D6;
+
+//other custom colors
+$grey:  #f2f3f8;
+$blueish-grey: #4a5973;
+
+//=================================================================================THEMES======================================================================================
+
+//other custom themes
+$custom-theme-colors: (
+    "grey" : $grey,
+    "blueish-grey" : $blueish-grey
+);
+
+//custom grzegorz themes
+$grzegorz-theme-colors: (
+    "grzegorz-orange" : $grzegorz-orange,
+    "grzegorz-dark-green" : $grzegorz-dark-green,
+    "grzegorz-grey" : $grzegorz-grey,
+    "grzegorz-light-green" : $grzegorz-light-green
+);
+
+//merging all color themes together
+$theme-colors: map-merge-multiple($theme-colors,$custom-theme-colors, $grzegorz-theme-colors);
+
+//=============================================centered offcanvas==============================================================================================================
+.offcanvas-center{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%)!important;
+    bottom:auto !important;
+}
+.offcanvas-center-container{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw; 
+    height: 100vw;
+    display: none;
+}
+//==================================================HORIZONTAL SCROLLING=======================================================================================================
+.horizontal-scrollable{
+    overflow-x: auto;
+    white-space: nowrap;
+}
+//=============================================================================================================================================================================
+
+//importing boostrap
+@import '../node_modules/bootstrap/scss/bootstrap';

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <error-page>
+        <!-- Missing resource -->
+        <error-code>404</error-code>
+        <location>/404.gif</location>
+    </error-page>
+    <servlet>
+        <servlet-name>Tasks</servlet-name>
+        <jsp-file>/tasksboard.html</jsp-file>
+        
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Tasks</servlet-name>
+        <url-pattern>/Tasks</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <jsp-file>/login.html</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Dashboard</servlet-name>
+        <jsp-file>/dashboard.html</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Dashboard</servlet-name>
+        <url-pattern>/Dashboard</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Index</servlet-name>
+        <jsp-file>/index.html</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Index</servlet-name>
+        <url-pattern></url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Inactive</servlet-name>
+        <jsp-file>/inactive.html</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Inactive</servlet-name>
+        <url-pattern>/Inactive</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Account</servlet-name>
+        <jsp-file>/account.html</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Account</servlet-name>
+        <url-pattern>/Account</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Register</servlet-name>
+        <jsp-file>/register.html</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Register</servlet-name>
+        <url-pattern>/Register</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>OrganisationView</servlet-name>
+        <jsp-file>/organisation_view.html</jsp-file>
+        
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OrganisationView</servlet-name>
+        <url-pattern>/OrganisationView</url-pattern>
+    </servlet-mapping>
+    
+    
+    <servlet>
+        <servlet-name>OrganisationCreate</servlet-name>
+        <jsp-file>/orgform.html</jsp-file>
+        
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OrganisationCreate</servlet-name>
+        <url-pattern>/OrganisationCreate</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>OrganisationEdit</servlet-name>
+        <jsp-file>/orgedit.html</jsp-file>
+        
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OrganisationEdit</servlet-name>
+        <url-pattern>/OrganisationEdit</url-pattern>
+    </servlet-mapping>
+         
+    <servlet>
+        <servlet-name>CategoryCreation</servlet-name>
+        <jsp-file>/createcategory.html</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CategoryCreation</servlet-name>
+        <url-pattern>/CategoryCreation</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>CategoryEdit</servlet-name>
+        <jsp-file>/editcategory.html</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CategoryEdit</servlet-name>
+        <url-pattern>/CategoryEdit</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>UnitCreation</servlet-name>
+        <jsp-file>/createunit.html</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UnitCreation</servlet-name>
+        <url-pattern>/UnitCreation</url-pattern>
+    </servlet-mapping>
+         
+    <servlet>
+        <servlet-name>Invitation</servlet-name>
+        <jsp-file>/invite.html</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Invitation</servlet-name>
+        <url-pattern>/Invitation</url-pattern>
+    </servlet-mapping> 
+    
+    <filter>
+        <filter-name>Resource</filter-name>
+        <filter-class>pl.polsl.se.hoar.filters.Resource</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>Resource</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    
+    <filter>
+        <filter-name>Invitation</filter-name>
+        <filter-class>pl.polsl.se.hoar.filters.Invitation</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>Invitation</filter-name>
+        <url-pattern>/Invitation/*</url-pattern>
+    </filter-mapping>
+    
+    <filter>
+        <filter-name>Organisation</filter-name>
+        <filter-class>pl.polsl.se.hoar.filters.Organisation</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>Organisation</filter-name>
+        <url-pattern>/Organisation/*</url-pattern>
+    </filter-mapping>
+    
+</web-app>

@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Grzegorz demo</title>
+    <link href="style/bootstrap/main.css" rel="stylesheet">
+      
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  </head>
+  <body class="m-0 border-0 vh-100 bg-gradient-grzegorz">
+<div class="h-100 d-flex flex-column">
+    <nav class="navbar navbar-expand-lg bg-grzegorz-light-green bg-gradient border-bottom border-2">
+      <div class="container-fluid justify-content-between">
+        <a class="navbar-brand" href="#">
+            <img src="pictures/grzegorz.png" alt="Logo" height="30">
+            Grzegorz
+        </a>
+          
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+          
+        <div class="collapse flex-grow-0 navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <button class="btn btn-grzegorz-dark-green" id="createTaskButton" type="button" data-bs-toggle="offcanvas" data-bs-target="#overlay" aria-controls="overlay">Create Task</button>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="Dashboard">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="">Tasks</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Username
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="Account">Account</a></li>
+                <li><a class="dropdown-item" href="OrganisationView">Organisation</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="Logout">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+      
+<main class="d-flex container-fluid justify-content-center flex-grow-1 ">
+    <div class="container">
+        <div class="row gx-5 gy-2 h-100 py-2">
+            <div class="col-lg-4">
+                <div class="bg-grzegorz-grey rounded-4 border p-2 h-100 border border-3 border-grzegorz-dark-green">
+                    <div class="h5 text-center fw-semibold mb-5">
+                        TO DO
+                        <span class="badge bg-grzegorz-orange bg-opacity-75 rounded-pill ms-2"  id="toDoTaskListCounter">0</span>
+                    </div>
+                    <ul class="list-group list-group-flush " id="toDoTaskList">
+                        
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 ">
+                <div class="bg-grzegorz-grey rounded-4 border p-2 h-100 border border-3 border-grzegorz-dark-green">
+                    <div class="h5 text-center fw-semibold mb-5">
+                        IN PROGRESS
+                        <span class="badge bg-grzegorz-orange bg-opacity-75 rounded-pill ms-2" id="inProgressTaskListCounter">0</span>
+                    </div>
+                    <ul class="list-group list-group-flush " id="inProgressTaskList">
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="bg-grzegorz-grey rounded-4 border p-2 h-100 border border-3 border-grzegorz-dark-green">
+                    <div class="h5 text-center fw-semibold mb-5">
+                        DONE
+                        <span class="badge bg-grzegorz-orange bg-opacity-75 rounded-pill ms-2" id="doneTaskListCounter">0</span>
+                    </div>
+                    <ul class="list-group list-group-flush " id="doneTaskList">
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+    
+<div class="offcanvas offcanvas-start" tabindex="-1" id="Task1" aria-labelledby="Task1">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title"  id="task_name"></h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div id="creation_date">
+
+    </div>
+    <div id="assignee">
+
+    </div>
+
+    <div id="task_description_box">
+      <h4>Description</h4>
+      <div id="task_description">
+
+      </div>
+    </div>
+    <div class="dropdown mt-3">
+      <button class="btn btn-grzegorz-dark-green dropdown-toggle"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Move to
+      </button>
+      <ul class="dropdown-menu" id="moving_list">
+        <li><a class="dropdown-item" href="#">To do</a></li>
+        <li><a class="dropdown-item" href="#">In progress</a></li>
+        <li><a class="dropdown-item" href="#">Done</a></li>
+      </ul>
+    </div>
+    <div class="accordion accordion-flush" id="accordionExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Comments
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <div id="comments">
+
+            </div>
+            <!-- ===================================== -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="new_comment_section">
+      <div>
+        <label  class="col-form-label" >Your new comment</label>
+      </div>
+      <div>
+        <textarea class="form-control" id="comment_textbox" style="height: 100px;resize: none;"></textarea>
+      </div> 
+      <button class="btn btn-outline-grzegorz-dark-green mt-2"  type="button" id="add_comment_btn">
+        Add comment
+      </button>   
+    </div>
+
+  </div>
+</div>
+    
+</div>
+
+<div  class="offcanvas-center-container" id="overlay_container">
+  <div id="overlay" class="offcanvas offcanvas-center col-6 p-4 rounded-2" id="overlay" aria-labelledby="overlay">
+    <div class="fs-1 align-self-center mb-4">
+      Creating task 
+    </div>
+    <form>
+      <div class="row mb-3">
+        <label  class="col-sm-2 col-form-label">Task Name</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="task_name_input">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label  class="col-sm-2 col-form-label" >Description</label>
+        <div class="col-sm-10">
+          <textarea class="form-control" id="description_input" style="height: 100px"></textarea>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <label class="col-sm-2 col-form-label">Category</label>
+        <div class="col-sm-10">
+          <select class="form-select" id="task_category" aria-label="Default select example">
+          </select>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label class="col-sm-2 col-form-label">Assigned unit</label>
+        <div class="col-sm-10">
+          <select class="form-select" id="assignee_select_unit" aria-label="Default select example" >
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <label class="col-sm-2 col-form-label">Assigned worker</label>
+        <div class="col-sm-10">
+          <select class="form-select" id="assignee_select" aria-label="Default select example" >
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-10 offset-sm-2">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="to_me_checkbox">
+            <label class="form-check-label">
+              Assign to me 
+            </label>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="btn btn-grzegorz-dark-green" onclick="createNewTask()">Create</button>
+      <button type="button" data-bs-dismiss="offcanvas" aria-label="Close" id="overlay_cancel_button" class="btn btn-outline-grzegorz-dark-green" >Cancel</button>
+    </form>
+  </div>
+</div>
+<script src="js/common.js"></script>
+<script>
+var arrayOfListsIds = new Array("toDoTaskList","inProgressTaskList","doneTaskList");
+var currentTask = 0;
+//===========================================================================================================
+var comment_textbox = document.getElementById("comment_textbox");
+//===========================================================================================================
+  function disableMovingButtons(disabled){
+    var moves_array = $('#moving_list > li').children().toArray();
+    console.log(moves_array);
+    for(var i=0;i<moves_array.length;i++){
+      if(i==disabled){
+        moves_array[i].classList.add("disabled");
+      }else{
+        moves_array[i].classList.remove("disabled");
+      }
+    }
+  }
+  function sortComments(commentsArray){
+    var compareNumbers = function(a,b){
+      const a_date = new Date(a.date+"T"+a.time+"Z");
+      const b_date = new Date(b.date+"T"+b.time+"Z");
+      return b_date-a_date;
+
+    }
+    commentsArray.sort(compareNumbers);
+  }
+  function insertComments(commentsArray){
+    sortComments(commentsArray);
+    var comments_section = document.getElementById("comments");
+    comments_section.innerHTML = "";
+    for (var i=0;i<commentsArray.length;i++) {
+        comments_section.innerHTML+='<div class="mb-4"><div class="d-flex justify-content-between mb-1 text-blueish-grey"><div>'+commentsArray[i].worker.name+' '+commentsArray[i].worker.surname+'</div><div>'+commentsArray[i].date+'</div><div>'+commentsArray[i].time+'</div></div><div>'+commentsArray[i].text+'</div></div>';
+      }
+  }
+  function createNewTask(){
+    var task_name = document.getElementById("task_name_input");
+    var description = document.getElementById("description_input");
+    var category = document.getElementById("task_category");
+    //var unit = document.getElementById("assignedUnit");
+    
+    const xhttp = new XMLHttpRequest();
+                
+      xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {  
+        alert(this.response);
+        //location.reload(true);
+      }
+    }
+
+    var requestArray = {}
+
+    requestArray["title"] = task_name.value;
+    requestArray["assignedWorker"] = parseInt(assignee_select.value);
+    requestArray["assignedUnit"] = parseInt(assignee_select_unit.value);
+    requestArray["category"] = parseInt(task_category.value);
+
+    console.log(requestArray);
+                
+    var requestJson = JSON.stringify(requestArray);
+
+    xhttp.open("POST", "CreateTask", true);
+    xhttp.send(requestJson);
+  }
+
+  function fillCategories(){
+    const xhttp = new XMLHttpRequest();
+         
+         xhttp.onreadystatechange = function() {
+         if (this.readyState == 4 && this.status == 200) {  
+           var result = jQuery.parseJSON(this.response);
+   
+           var categoriesArray = result.categories;
+   
+           console.log(categoriesArray);
+            alert(this.response);
+   
+           const category_select = $("#task_category");
+   
+           category_select.empty();
+   
+           category_select.append(new Option("-","default"),undefined);
+   
+           for (var i=0;i<categoriesArray.length;i++) {
+             let newOption = new Option(categoriesArray[i].name+" ("+categoriesArray[i].description+")",categoriesArray[i].id);
+             category_select.append(newOption,undefined);
+            }
+   
+         }
+       }
+   
+       xhttp.open("POST", "GetCategories", true);
+       xhttp.send(null);
+  }
+  function fillAssignables(){
+    const xhttp = new XMLHttpRequest();
+         
+      xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {  
+        var result = jQuery.parseJSON(this.response);
+
+        var workersArray = result.workers;
+        var unitsArray = result.units;
+
+        console.log(workersArray);
+       alert(this.response);
+
+        const assignee_select = $("#assignee_select");
+        const assignee_select_unit = $("#assignee_select_unit");
+
+        assignee_select_unit.empty();
+        assignee_select.empty();
+
+        assignee_select.append(new Option("-","default"),undefined);
+        assignee_select_unit.append(new Option("-","default"),undefined);
+
+        for (var i=0;i<workersArray.length;i++) {
+          let newOption = new Option(workersArray[i].name+" "+workersArray[i].surname,workersArray[i].id);
+          assignee_select.append(newOption,undefined);
+         }
+
+         for (var i=0;i<unitsArray.length;i++) {
+          let newOption = new Option(unitsArray[i].name+" (unit)",unitsArray[i].id);
+          assignee_select_unit.append(newOption,undefined);
+         }
+
+      }
+    }
+
+    xhttp.open("POST", "GetAssignables", true);
+    xhttp.send(null);
+  }
+  function getDetails(clicked_id){
+  const xhttp = new XMLHttpRequest();
+
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {  
+      console.log(this.response)
+      var result = jQuery.parseJSON(this.response);
+      document.getElementById("task_description").innerHTML=result.description;
+      document.getElementById("task_name").innerHTML=result.title;
+      document.getElementById("creation_date").innerHTML="Created "+result.creationDate;
+      document.getElementById("assignee").innerHTML="";
+      try{
+        document.getElementById("assignee").innerHTML="Assigned to "+result.assignedWorker.name+" "+result.assignedWorker.surname;
+      }catch{}
+      try{
+        document.getElementById("assignee").innerHTML="Assigned to "+result.assignedUnit.name;
+      }catch{}   
+
+      currentTask = clicked_id;
+
+      disableMovingButtons(result.status);
+      insertComments(result.comments);
+      }
+    };
+
+    xhttp.open("GET", "TaskDetails?id="+clicked_id, true);
+    xhttp.send();
+  };
+
+
+  function showHashedTask(){
+    var offcanvas_tag = window.location.hash.substring(1);
+    var offcanvas_el = document.getElementById(offcanvas_tag);
+    var offcanvas = new bootstrap.Offcanvas(offcanvas_el, {backdrop: true});
+    offcanvas.show();
+  }
+
+  function updateTaskCounters(){
+
+    arrayOfListsIds.forEach((element) =>{
+      var tasklist = document.getElementById(element);
+      var li_array = tasklist.getElementsByTagName("li");
+      var task_counter = document.getElementById(element+"Counter");
+      task_counter.innerHTML = li_array.length;
+    });
+  }
+
+  function insertTasks(tasksArray){ 
+    for (var i=0;i<tasksArray.length;i++) {
+            var columnid = arrayOfListsIds[tasksArray[i].status]
+            var column = document.getElementById(columnid);
+            column.innerHTML+='<li class="list-group-item rounded-4 mb-1 p-3"><div class="h5 text-center" id="task1_name">'+tasksArray[i].title+'</div><hr><div class="text-center" id="task1_description">Short Description</div><div class="d-flex justify-content-between mt-2"><div class="text-muted fs-7 align-self-center"><img src="pictures/icons/bug_icon.png" alt="Logo" height="15">Category name 1</div><button class="btn btn-grzegorz-dark-green" type="button" id="'+tasksArray[i].id+'" onclick="getDetails(this.id)" data-bs-toggle="offcanvas" data-bs-target="#Task1" aria-controls="Task1">View</button></div></li>'
+         }
+         updateTaskCounters(); 
+  }
+  //moving tasks
+  $('#moving_list > li').click(function(){
+    const xhttp = new XMLHttpRequest();
+                
+    xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {  
+      var result = jQuery.parseJSON(this.response);
+      if(result.status=="ok"){
+        $("#"+currentTask).parent().parent().detach().appendTo('#'+arrayOfListsIds[moved_to]);
+        disableMovingButtons(moved_to);
+        updateTaskCounters();
+      }
+    }
+    }
+
+    var requestArray = {}
+    var moved_to = $( "#moving_list > li" ).index( this );
+    requestArray["task"] = currentTask;
+    requestArray["status"] = moved_to; 
+
+    console.log(requestArray);
+              
+    var requestJson = JSON.stringify(requestArray);
+
+    xhttp.open("POST", "UpdateTaskStatus", true);
+    xhttp.send(requestJson);
+  });
+//====================================OTHER FUNCTIONS=======================================================================================
+//Inserting comments
+function insertCommnets(commentsArray){
+
+}
+
+//====================================CALLBACKS=============================================================================================
+function addCommentCallback(response){
+  var comment_textbox = document.getElementById("comment_textbox");
+  if(response.status=="ok"){
+    comment_textbox.value = "";
+    getDetails(currentTask);
+  }
+}
+
+//====================================EVENTS================================================================================================
+
+//Adding comment
+$('#add_comment_btn').click(function(){         
+  var requestArray = {}
+  requestArray["task"] = parseInt(currentTask);
+  requestArray["text"] = comment_textbox.value; 
+  performRequest("AddComment",requestArray,addCommentCallback);
+});
+
+//==========================================================================================================================================
+
+
+  //when hash in the url is changed we trigger showHashedTask function
+  $(window).on( 'hashchange', showHashedTask);
+
+  //=============hack for overlay=========================================
+  $("#overlay_cancel_button").click(function(){
+    var myOffcanvas = document.getElementById("overlay_container");
+    myOffcanvas.style.display = "none";
+  });
+  $("#createTaskButton").click(function(){
+    var myOffcanvas = document.getElementById("overlay_container");
+    myOffcanvas.style.display = "block";
+  //===================
+    fillAssignables();
+    fillCategories();
+  });
+  $( "#overlay_container" ).on("mousedown",".offcanvas-backdrop", function () {
+    var myOffcanvas = document.getElementById("overlay_container");
+    myOffcanvas.style.display = "none"; 
+})
+//=============================================================================
+  $("#to_me_checkbox").change(function(){
+    var new_value = $('#to_me_checkbox').prop('checked');
+    $("#assignee_select").prop("disabled", new_value); 
+  });
+
+
+  $(document).ready(function() {
+      const xhttp = new XMLHttpRequest();
+
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {  
+            
+            var result = jQuery.parseJSON(this.response);
+            console.log(result);
+            insertTasks(result.tasks);
+        }
+      };
+      xhttp.open("GET", "TaskList", true);
+      xhttp.send(null);
+  });
+</script>
+
+<!--===========================================================================Bootstrap===========================================================================================================================-->  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<!--===============================================================================================================================================================================================================-->
+
+  </body>
+</html>

@@ -1,0 +1,275 @@
+/* nemu */
+
+body#front {
+    margin: 0;
+    padding: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-image: linear-gradient(180deg, rgba(255, 145, 31, 1) 0%, rgba(5, 160, 140, 1) 50%, rgba(0, 82, 71, 1) 100%);
+}
+
+#menu {
+    display: flex;
+    align-items: flex-end;
+    z-index: 2;
+    height: 10vh;
+    width: 100%;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-end;
+    
+    /* background-color: #ff911fEE; */
+    position: absolute;
+    top: 0;
+    padding: 0%;
+}
+
+
+li {
+    text-align: left;
+}
+
+input[type=button] {
+    background-color: #005247;
+    margin-top: -1vh;
+    margin-right: 1vw;
+    font-size: larger;
+    cursor: pointer;
+    color: white;
+    border: none;
+    border-radius: 3vh;
+    padding: 1.5vh;
+    transition-duration: 0.4s;
+    border-style: groove;
+    border-color: #005247;
+}
+
+input[type=button]:hover {
+    background-color: #FF911F;
+}
+
+#header {
+    margin: 0;
+    height: 100vh;
+    width: 100%;
+    /* background-color: #ff911f; */
+}
+
+#logo {
+    position: absolute;
+    height: 100vh;
+    width: 40vw;
+    left: 50vw;
+    object-position: right;
+    background-image: url("../pictures/grzegorz.png");
+    background-attachment: fixed;
+    background-position: 60vw 15vh;
+    background-size: 25vw;
+    background-repeat: no-repeat;
+}
+
+.headertext {
+    color: white;
+    
+    left: 30vh;
+    margin-top: 0;
+    position: absolute;
+}
+
+#title {
+    font-size: 10vh;
+    top: 30vh;
+    z-index: 2;
+    text-shadow: 2px 2px #000000;
+
+}
+
+#titlestripe {
+    position: absolute;
+    left: 25vh;
+    top: 35vh;
+    height: 3vh;
+    width: 20vw;
+    background-color: #005247AA;
+    z-index: 1;
+}
+
+#subtitle {
+    font-size: 5vh;
+    top: 45vh;
+    font-style: oblique;
+    text-shadow: 1px 1px #000000;
+}
+
+#loginform {
+    width: 60vw;
+    margin: auto;
+    text-align: center;
+}
+
+#loginform::content {
+    margin: 20px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    row-gap: 5vh;
+    column-gap: 5%;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.typeone {
+    border-radius: 2vw;    
+    width: 45%;
+    height: 75vh;
+    background-color: #97E0C9;
+    background-size: cover;
+    background-position: center;
+    text-align: center; 
+    margin: 0;
+    padding: 0;
+}
+
+.typeone #titlestripe {
+    position: relative;
+    margin: auto;
+    left: 0;
+    top: 21vh;
+    height: 3vh;
+    width: 17vw;
+    background-color: #005247AA;
+    z-index: 1;
+}
+
+.typetwo {
+    border-radius: 2vw;
+    border-color: #05A08C;
+    border-style: solid;
+    border-width: 3px;
+    padding: 5vh 5vw;
+    width: 20%;
+    height: 50vh;
+    background-color: #C1E0D6;
+    text-align: center; 
+    margin: 0;
+}
+
+/* .typeone > h1 {
+    transform: translate(0, -50%);
+    top: 35vw;
+    color: white;
+} */
+
+#footer {
+    width: 90%;
+    height: 20vh;
+    border-radius: 2vw;
+    border-color: #05A08C;
+    border-style: solid;
+    border-width: 3px;
+    background-color: #FF911F;
+}
+
+#flextext {
+    font-size: 3vh;
+}
+
+p#flextext {
+    position: relative;
+    top: 27.5vh;
+    margin: auto;
+    font-size: 10vh;
+    color: white;
+    text-align: center;
+    text-shadow: 0.2vw 0.2vw #005247;
+    z-index: 2;
+}
+
+#one {
+    background-image: url(../pictures/martin-wettstein-4CVMWrWh3xU-unsplash.jpg);
+    
+    
+}
+
+
+#two {
+    background-image: url(../pictures/rod-long-BSz0jJ172vM-unsplash.jpg);
+}
+
+/* Miłosz */
+
+body {
+    background: linear-gradient(to right, #ff911f, #05A08C, #005247);
+    font-family: 'Poppins', sans-serif;
+}
+
+
+#branding {
+    color: white;
+    text-shadow: 1px 1px #000000;
+    text-align: center;
+    font: 20px;
+    margin: 10vh auto 0 auto;
+}
+
+#form {
+    z-index: 20;
+    position: relative;
+    width: 300px;
+    margin: 4vh auto 0 auto;
+    padding: 20px;
+    background-color: whitesmoke;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+#form h1 {
+    color: #005247;
+    text-align: center;
+}
+
+#form button {
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%;
+    color: white;
+    background-color: #05A08C;
+    border: none;
+    border-radius: 4px;
+}
+
+.input-control {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-control input {
+    border: 2px solid #f0f0f0;
+	border-radius: 4px;
+	display: block;
+	font-size: 12px;
+	padding: 10px;
+	width: 100%;
+}
+
+.input-control input:focus {
+    outline: 0;
+}
+
+.input-control.success input {
+    border-color: #09c372;
+}
+
+.input-control.error input {
+    border-color: #ff3860;
+}
+
+.input-control .error {
+    color: #ff3860;
+    font-size: 9px;
+    height: 13px;
+}

@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="pictures/grzegorz.png">
+    <title>Account settings</title>
+    <link href="style/bootstrap/main.css" rel="stylesheet">
+<!--=============================================================JQuery==========================================================================================================================================-->   
+      <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<!--===============================================================================================================================================================================================================-->
+  </head>
+  <body class="m-0 border-0 bg-gradient-grzegorz"> 
+      
+    <nav class="navbar navbar-expand-lg bg-grzegorz-light-green bg-gradient border-bottom border-2">
+        <div class="container-fluid justify-content-between">
+          <a class="navbar-brand" href="#">
+              <img src="pictures/grzegorz.png" alt="Logo" height="30">
+              Grzegorz
+          </a>
+            
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+            
+          <div class="collapse flex-grow-0 navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="Dashboard">Home</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="username_field"role="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li><a class="dropdown-item" href="Account">Account</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="Logout">Logout</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    
+<main class="d-flex justify-content-center mt-3">
+    <div class="col-4 bg-grzegorz-grey p-3 rounded-4 container">
+        <div class="row g-2">
+
+            <div class="col-4">
+                <label class="col-form-label">Created on</label> 
+            </div>
+            <div class="col-8">
+                <input type="text" id="date_textbox" readonly class="form-control-plaintext">
+            </div>
+
+            <div class="col-4">
+                <label for="staticEmail" class="col-form-label">First Name</label>
+            </div>
+            <div class="col-8">
+                <input type="text" class="form-control" id="name_textbox" disabled>
+            </div>
+
+            <div class="col-4">
+                <label for="inputPassword" class="col-form-label">Last Name</label>
+            </div>
+            <div class="col-8">
+                <input type="text" class="form-control" id="surename_textbox" disabled>
+            </div>
+
+            <div class="col-4">
+                <label  class="col-form-label" >Details</label>
+            </div>
+            <div class="col-8">
+                <textarea class="form-control" id="details_textarea" style="height: 100px;resize: none;" disabled></textarea>
+            </div>           
+            <div class="col-2" id="edit_btn">
+                <button class="btn btn-grzegorz-dark-green col-12" type="button" >
+                    Edit
+                </button>
+            </div>
+            <div class="col-2 d-none" id="save_btn">
+                <button class="btn btn-grzegorz-dark-green col-12" type="button" >
+                    Save
+                </button>
+            </div>
+            <div class="col-2 d-none" id="cancel_btn">
+                <button class="btn btn-grzegorz-dark-green col-12" type="button" >
+                    Cancel
+                </button>  
+            </div>
+            <hr>
+            <div class="col-4">
+                <label for="inputPassword" class="col-form-label">Password</label>
+            </div>
+            <button class="btn btn-grzegorz-dark-green col-8" type="button" id="change_password_btn">
+                Change password
+            </button>
+            <div class="col-4">
+                <label class="col-form-label">Current password</label>
+            </div>
+            <div class="col-8">
+                <input type="password" class="form-control" value="" id="current_password_textbox">
+            </div>
+            <div class="col-4">
+                <label class="col-form-label">New password</label>
+            </div>
+            <div class="col-8">
+                <input type="password" class="form-control" value="" id="new_password_textbox">
+            </div>
+            <div class="col-4">
+                <label class="col-form-label">Repeated new password</label>
+            </div>
+            <div class="col-8">
+                <input type="password" class="form-control" value="" id="repreated_new_password_textbox">
+            </div>
+
+        </div>
+    </div>
+</main>
+<!-- ================================================Toast=========================================================================== -->
+<div class="toast-container position-fixed bottom-0 end-0 p-2" id="toastBox">
+
+</div>
+<!--===============================================================================Bootstrap=======================================================================================================================-->  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+      <script src="js/common.js"></script>
+      <script src="js/toast_factory.js"></script>
+    <script>
+//===================global variables...==============================================================================================================================================================        
+        var edit_button =  document.getElementById("edit_btn");
+        var cancel_button =  document.getElementById("cancel_btn");
+        var save_button =  document.getElementById("save_btn");
+
+        var name_input_textbox = document.getElementById("name_textbox");
+        var surename_input_textbox = document.getElementById("surename_textbox");
+        var details_input_textarea = document.getElementById("details_textarea");
+        var date_input_textarea = document.getElementById("date_textbox");
+
+        var password_input_textbox = document.getElementById("current_password_textbox");
+        var new_input_textbox = document.getElementById("new_password_textbox");
+        var repreated_new_input_textbox = document.getElementById("repreated_new_password_textbox");
+
+        const username_field = document.getElementById("username_field");
+//=========================================================================================================================================================================================================        
+        function enableEdition(bool_input){
+            if(bool_input){
+                
+                edit_button.classList.add("d-none");
+                cancel_button.classList.remove("d-none");
+                save_button.classList.remove("d-none"); 
+                name_input_textbox.disabled = false;
+                surename_input_textbox.disabled = false;
+                details_input_textarea.disabled = false;
+                
+            }else{
+                
+                edit_button.classList.remove("d-none");
+                cancel_button.classList.add("d-none");
+                save_button.classList.add("d-none");   
+                name_input_textbox.disabled = true;
+                surename_input_textbox.disabled = true;
+                details_input_textarea.disabled = true;
+            }
+        }
+//===========================================================================================
+        function changePasswordCallback(response){
+            if(response.status=="ok"){
+                insertToastSuccess("Password change","Your password has been changed",5000);
+                current_password_textbox.value = "";
+                new_password_textbox.value = "";
+                repreated_new_password_textbox.value = "";
+            }else{
+                insertToastError("Password change failure",response.message,5000);
+            }
+        }
+//==========================================================================================
+        function updateAccountDataCallback(response){
+            if(response.status == "ok"){
+                insertToastSuccess("User data change","Your account data has been updated",5000);
+                fillUserData();
+            }else{
+                insertToastError("User data change failure",response.message,5000);
+            }
+        }
+
+        function fillUserData(){
+        const xhttp = new XMLHttpRequest();
+         
+         xhttp.onreadystatechange = function() {
+         if (this.readyState == 4 && this.status == 200) {  
+           var result = jQuery.parseJSON(this.response);
+
+           name_input_textbox.value = result.name;
+           surename_input_textbox.value = result.surname;
+           details_input_textarea.value = result.description;
+           date_input_textarea.value = result.joinDate;
+
+           username_field.innerHTML = result.name + " " + result.surname;
+         }
+       }
+   
+       xhttp.open("POST", "UserDetails", true);
+       xhttp.send(null);
+        }
+
+        $(document).ready( function(){
+            fillUserData();
+//=============================================================
+            $("#edit_btn").click(function(){
+                enableEdition(true);
+            })
+            $("#save_btn").click(function(){
+                enableEdition(false);
+
+                var requestArray = {}
+
+                requestArray["name"] =  name_input_textbox.value;
+                requestArray["surname"] = surename_input_textbox.value;
+                requestArray["description"] = details_input_textarea.value;
+
+                performRequest("UpdateUserData",requestArray,updateAccountDataCallback)
+            })
+            $("#cancel_btn").click(function(){
+                enableEdition(false);
+                fillUserData();
+            })
+            $("#change_password_btn").click(function(){
+                var requestArray = {}
+
+                requestArray["password"] =  current_password_textbox.value;
+                requestArray["new_password"] = new_password_textbox.value;
+                requestArray["repeated_new_password"] = repreated_new_password_textbox.value;
+                performRequest("ChangePassword",requestArray,changePasswordCallback);
+            })
+        })
+    </script>
+  </body>
+</html>

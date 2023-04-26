@@ -1,0 +1,14 @@
+Tue Jan 17 09:35:09 CET 2023 : Serwer sieciowy Apache Derby - 10.14.2.0 - (1828579) uruchomiony i gotowy do zaakceptowania po³¹czeñ na porcie 1527 w {3} 
+----------------------------------------------------------------
+Tue Jan 17 09:53:31 CET 2023:
+ Uruchamianie wersji The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579) systemu Derby: instancja a816c00e-0185-bede-2a6f-0000406cf3dd
+w katalogu bazy danych C:\HOAR\hoard jdk.internal.loader.ClassLoaders$AppClassLoader@2a139a55 
+
+java.vendor=Oracle Corporation
+java.runtime.version=17.0.4.1+1-LTS-2
+user.dir=C:\db-derby-10.14.2.0-bin
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=C:\HOAR
+Uruchomiono program ³aduj¹cy klasê bazy danych - derby.database.classpath=''
